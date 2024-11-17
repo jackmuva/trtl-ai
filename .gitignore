@@ -2,3 +2,4 @@ trtl-ai.iml
 .idea
 *__pycache__*
 .env
+venv

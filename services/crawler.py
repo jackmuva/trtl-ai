@@ -21,16 +21,26 @@ def crawlSite(url: str):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     counter = 0
+
+    text = extractText(url)
+    textResults.append(text)
+    time.sleep(1)
+    print(url)
+    print(text, "\n", "\n")
+    counter += 1
+
     for atag in set(soup.find_all('a', href=True)):
         link = str(atag.get('href'))
-        if url in link or (link.startswith("./") and link != "./"):
+        if url in link or (link.startswith("./") and link != "./") or (link.startswith("/") and link != "/"):
             if link.startswith("./"):
                 link = url + "/" + link[2:]
+            elif link.startswith("/"):
+                link = url + link
             text = extractText(link)
             textResults.append(text)
             time.sleep(1)
+            print(link)
             print(text, "\n", "\n")
-
             counter += 1
             if counter >= int(maxPages):
                 break
