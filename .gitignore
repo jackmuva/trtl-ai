@@ -1,3 +1,4 @@
 trtlai.iml
 .idea
 *__pycache__*
+.env
