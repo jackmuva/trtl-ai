@@ -38,7 +38,6 @@ def crawlSite(url: str):
                 link = url + link
             text = extractText(link)
             textResults.append(text)
-            time.sleep(1)
             print(link)
             print(text, "\n", "\n")
             counter += 1

@@ -14,11 +14,16 @@ def promptLlm(scrapedText: list[str]):
                        "text. If no texts are provided, let user know that website could not be accessed."
         },
     ]
+    tokens = 0
     for text in scrapedText:
+        tokens += len(text.split())
+        if tokens > int(os.environ.get("MAX_TOKENS")):
+            break
         messages.append({
             "role": "user",
             "content": f'"""{text}"""',
         })
+
     messages.append({
         "role": "user",
         "content": "What are your top 5 ideas?"
@@ -26,7 +31,7 @@ def promptLlm(scrapedText: list[str]):
 
     chat_completion = client.chat.completions.create(
         messages=messages,
-        model="gpt-4o",
+        model="gpt-4o-mini",
     )
     print(chat_completion)
     return chat_completion

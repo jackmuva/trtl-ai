@@ -1,4 +1,4 @@
-# TrtlAI
+# Trtl-AI
 This service is used to brainstorm ideas for email series, when inputting a website.
 
 TrtlAI with crawl through the website map and extract all relevant data. The data will be fed into
